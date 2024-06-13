@@ -23,11 +23,9 @@ function SignInForm() {
 
         <Form.Group
           className="mb-3 d-flex flex-column "
-          style={{ margin: "0px 120px 0px 120px" }}
         >
           <GoogleSignInButton />
           <FacebookSignInButton />
-          <Link></Link>
           <button className="btn btn-success btn-block mt-4">
             <Link to={'/'} style={{color: 'white'}}>
               <i className="fab fa-google"></i> Sign in
