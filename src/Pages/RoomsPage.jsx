@@ -36,7 +36,7 @@ const RoomsPage = () => {
       updateRoomStatus({ roomId: room.id, isAvailable: false, isBooked: true })
     );
     console.log(`room ${room.id} is booked see details`, room);
-    // dispatch(createBooking(room));
+    dispatch(createBooking(room));
   };
   useEffect(() => {
     dispatch(initializeRooms({ rooms: hotelRoomData }));
