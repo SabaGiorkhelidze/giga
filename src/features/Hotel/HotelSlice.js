@@ -13,6 +13,7 @@ const initialState = {
     vip: null,
   },
   searchQuery: "",
+  selectedRoom: null,
 };
 
 const HotelSlice = createSlice({
@@ -23,13 +24,6 @@ const HotelSlice = createSlice({
       state.rooms = action.payload.rooms;
       state.filteredRooms = action.payload.rooms;
     },
-    // setRoomAvailability: (state, action) => {
-    //   const { roomId, isAvailable } = action.payload;
-    //   const room = state.rooms.find((room) => room.id === roomId);
-    //   if (room) {
-    //     room.isAvailable = isAvailable;
-    //   }
-    // },
     updateRoomStatus: (state, action) => {
       const { roomId, isAvailable, isBooked } = action.payload;
       const roomIndex = state.rooms.findIndex((room) => room.id === roomId);
@@ -88,6 +82,21 @@ const HotelSlice = createSlice({
         state.rooms[roomIndex].isBooked = true;
       }
     },
+
+    fetchRoomDetails: (state, action) => {
+      // const roomId = action.payload;
+      // const room = state.rooms.find((room) => room.id == parseInt(roomId));
+      // console.log(room)
+      const roomId = parseInt(action.payload, 10); // Handle potential string conversion
+      console.log(state)
+      const room = state.rooms.find((room) => roomId === room.id); // Use find for single match
+
+      if (room) {
+        state.selectedRoom = room;
+      } else {
+        console.error(`Room with ID ${roomId} not found`); // Error handling for invalid id
+      }
+    },
   },
 });
 
@@ -101,31 +110,7 @@ export const {
   setSearchQuery,
   applySearch,
   bookRoom,
+  fetchRoomDetails,
 } = HotelSlice.actions;
 
 export default HotelSlice.reducer;
-
-// Update room info
-// updateRoomInfo: (state, action) => {
-//   const { roomId, info } = action.payload
-//   const room = state.rooms.find(room => room.id === roomId)
-//   if (room) {
-//     room.info = info
-//   }
-// },
-// Update room photo
-// updateRoomPhoto: (state, action) => {
-//   const { roomId, photo } = action.payload
-//   const room = state.rooms.find(room => room.id === roomId)
-//   if (room) {
-//     room.photo = photo
-//   }
-// },
-// Update room rating
-// updateRoomRating: (state, action) => {
-//   const { roomId, rating } = action.payload
-//   const room = state.rooms.find(room => room.id === roomId)
-//   if (room) {
-//     room.rating = rating
-//   }
-// },

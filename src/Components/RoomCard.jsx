@@ -17,7 +17,7 @@ const RoomCard = ({
       style={{ width: "16rem", margin: "10px 20px 10px 20px" }}
       className="mx-4"
     >
-      <Card.Img variant="top" src={roomImage} />
+      <img src={roomImage} />
       <Card.Body>
         <Card.Title>{roomTitle}</Card.Title>
         <Card.Text>{roomInfo}</Card.Text>

@@ -6,7 +6,7 @@ const HomePageAboutSection = () => {
     <Container className="mt-5">
       <Row className="justify-content-md-center">
         <Col md="auto">
-          <Image src="path-to-your-image.jpg" roundedCircle fluid />
+          <Image src="/vite.svg" roundedCircle fluid />
         </Col>
       </Row>
       <Row className="mt-4">
